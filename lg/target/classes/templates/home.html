@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+    <style>
+        .col-md-8 p{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        .card-img{
+            width: 100%;
+            height: 200px;
+        }
+        html,body{
+            background-image: url('https://media3.s-nbcnews.com/j/newscms/2019_41/3044956/191009-cooking-vegetables-al-1422_ae181a762406ae9dce02dd0d5453d1ba.nbcnews-fp-1200-630.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            font-family: 'Numans', sans-serif;
+        }
+        #container{
+            position: relative;
+            min-height: 100%;
+        }
+        #header{
+            height: 50px;
+            width: 100%;
+            background-color: rgba(225,193,37,0.7);
+            margin-bottom: 10px;
+        }
+        #main{
+            height: 100%;
+            width: 70%;
+            margin: 0 auto;
+            padding-bottom: 180px;
+        }
+        #footer{
+            width:100%;
+            height:150px;
+
+            background-color: rgba(225,193,37);
+            margin-top: 10px;
+            position:absolute;
+            left: 0;
+            bottom:0;
+        }
+        .mt-3{
+            text-align: center;
+        }
+        .mb-3{
+            text-align: center;
+        }
+
+    </style>
+    <link href="css/home.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="container" >
+    <div id="header" th:include="menu.html">
+
+    </div>
+    <div id="main">
+            <div th:each="a:${list}" class="row no-gutters" style="background-color: rgba(225,225,225,0.5); margin-bottom: 5px; height: 200px; ">
+                <div class="col-md-4">
+                    <img th:src="${a.getImage()}" class="card-img" alt="...">
+                </div>
+
+                <div class="col-md-8" >
+                    <div class="card-body">
+
+                        <a href="google.com"> <h5 class="card-title" th:text="${a.getTitle()}"></h5></a>
+
+                        <p class="card-text" th:text="${a.getDescription()}"></p>
+
+                            <a onclick="likeFunction" style="text-decoration: none; margin-right: 10px; cursor:pointer ">
+                                <span style="font-size:30px">&#128077;</span>
+                            </a>
+
+
+                        <span class="text-muted">Author: <a th:href="${a.getId()}"></a></span>
+                    </div>
+                </div>
+            </div>
+
+        <nav style="margin: 10px auto; width: 300px" aria-label="...">
+<!--            <ul class="pagination pagination-lg">-->
+<!--                <span th:each="i:${#numbers.sequence(1,total)}">-->
+<!--                    <li class="page-item"><a class="page    -link" th:href="@{'/home/'+${i}}">[[${i}]]</a></li>-->
+<!--                </span>-->
+<!--            </ul>-->
+        </nav>
+    </div>
+         <div id="footer" th:include="footer.html">
+    </div>
+
+</div>
+<script>
+    function likeFunction(param) {
+        axios.get('/Mycook/like?aid=' + param);
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+html,body{
+    background-color: papayawhip;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+#container{
+    position: relative;
+    min-height: 100%;
+}
+#header{
+    height: 50px;
+    width: 100%;
+    background-color: rgba(225,193,37,0.7); 
+    margin-bottom: 10px;
+}
+#main{
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 180px;
+}
+#footer{
+    
+    width:100%;
+    height:180px;
+    background-color: rgba(225,193,37);
+    margin-top: 10px;
+    position:absolute;
+    left: 0;
+    bottom:0;
+}
+.mt-3{
+    text-align: center;
+}
+.mb-3{
+   text-align: center;  
+}
+

@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<nav class="navbar navbar-expand-lg navbar-light " >
+    <a class="navbar-brand" th:href="@{/home}">Home</a>
+    <a class="navbar-brand" href="Favorite">Favorite</a>
+
+
+      <a class="navbar-brand" th:href="@{/listcreator}">Creator</a>
+      <form action="listcreator" method="post">
+        <a class="navbar-brand" href="listcreator"  th:text="'Hello' + ${session.acc.getName()}"></a>
+      </form>
+
+    <a class="navbar-brand" th:href="@{/login}">Logout</a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0" th:action="@{/home/search}" th:method="Get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" th:value="${title}"  name="title">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+</html>
